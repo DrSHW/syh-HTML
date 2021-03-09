@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ready加载事件</title>
+</head>
+<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+    $(function () {
+        console.log($(ready加载事件...));
+    })
+    $(document).ready(function () {
+        //获取元素
+        console.log($("#p1"));
+    });
+
+</script>
+<body>
+    <p id="p1">文本</p>
+</body>
+<!--
+    ready加载事件
+        即预加载事件
+            当页面的dom结构加载完毕后执行，类似于js中的load事件
+            ready事件可以写多个
+            语法：
+                $(document).ready(function(){
+
+                });
+            简写：$(function(){
+
+                 });
+
+-->
+</html>

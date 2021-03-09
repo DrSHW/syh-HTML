@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$ajax基本的使用</title>
+<!--
+
+
+
+注意!!!!!
+此节内容为第14节内容，请按顺序学习!
+
+
+
+-->
+</head>
+<body>
+    <button type="button" id="btn">查询数据</button>
+</body>
+<!--
+    $ajax的使用
+        格式
+            $.ajax({});
+        参数
+            type                请求方式GET/POST
+            url                 请求地址url
+            async               是否异步，默认true为异步
+            data                发送到服务器的数据
+            dataType            预期服务器返回的数据类型
+            contentType         设置请求头
+            success             请求成功调用此函数
+            error               请求失败调用此函数
+-->
+<script  src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $.ajax({
+        type: "get", // 请求方式
+        url: "js/data.txt", // 请求的地址
+        data: { // 请求数据，json对象
+            //uname:"zhangsan", // 如果没有参数，则不需要设置
+        },
+        //请求成功时调用的函数
+        success: function (data) { // 形参data，代表返回的数据
+            console.log(data); // 如果为字符串
+            //则将字符串转换为JSON对象
+            var obj = JSON.parse(data);
+            console.log(obj); // JSON对象
+        }
+    });
+
+    //设置点击事件,点击按钮，发送ajax请求，将数据显示到页面中
+    $("#btn").click(function () {
+        $.ajax({
+            type:"get", // 请求方式
+            url:"js/data.txt", // 请求的地址
+            data:{ // 请求数据，json对象
+                //uname:"zhangsan", // 如果没有参数，则不需要设置
+            },
+            dataType:"json", // 预期返回的数据类型，如果是json格式，在接受到会自动封装成一个json对象
+            //请求成功时调用的函数
+            success:function (data) {
+                console.log(data); // data已转换为json对象
+                // DOM操作
+                //创建ul
+                var ul = $("<ul></ul>");
+                //遍历返回的数据数组
+                for(let i = 0; i < data.length; i++){
+                    // 数组中的每一个元素
+                    var user = data[i];
+                    //创建一个li元素
+                    var li = "<li>"+user.userName+"</li>";
+                    //将li元素设置到ul元素中
+                    ul.append(li);
+                }
+                console.log(ul);
+                //将ul设置到body标签中
+                $("body").append(ul);
+            }
+        });
+    });
+</script>
+</html>

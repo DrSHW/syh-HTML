@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.get和$.post和c的使用</title>
+    <!--
+
+
+
+    注意!!!!!
+    此节内容为第14节内容，请按顺序学习!
+
+
+
+    -->
+</head>
+<body>
+
+</body>
+<!--
+    $.get();
+        语法
+            $.get("请求地址","请求参数",function(形参){
+
+            })
+    $.post();
+        语法
+            $.post("请求地址","请求参数",function(形参){
+
+            })
+    $.getJSON()
+        语法
+            $.getJSON("请求地址","请求参数",function(形参){
+
+            })
+        注:getJSON()方法要求返回的数据格式满足了json格式(json字符串)
+
+-->
+<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    //$.get();
+    $.get("js/013-data.json",{},function (data) {
+        console.log(data);
+    })
+    //$.post();
+    $.post("js/013-data.json",{},function (data) {
+        console.log(data);
+    })
+    //$.getJSON()
+    $.getJSON("js/013-data.json",{},function(data){
+        console.log(data);
+    })
+    $.get("js/014-text.txt",{},function(txt){
+        console.log(txt);
+    })
+    //如果返回的数据不是json格式的，则无法获取
+    // $.getJSON("js/014-text.txt",{},function(txt){
+    //     console.log(txt);
+    // })
+</script>
+</html>

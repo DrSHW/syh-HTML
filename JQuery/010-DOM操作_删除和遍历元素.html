@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作_删除和遍历元素</title>
+</head>
+<style type="text/css">
+    span{
+        color: white;
+        padding: 8px;
+        margin: 5px;
+        float: left;
+    }
+    .green{
+        background-color: green;
+    }
+    .blue{
+        background-color: blue;
+    }
+    .purple{
+        background-color: purple;
+    }
+</style>
+<body>
+    <h3>删除元素</h3>
+    <span class="green">jquery</span>
+    <span class="blue">javase</span>
+    <span class="green">http协议</span>
+    <span class="blue">servlet</span><br/>
+    <span class="purple">jquery</span>
+    <span class="purple">javase</span>
+    <span class="purple">http协议</span>
+    <span class="purple">servlet</span>
+</body>
+<!--
+    DOM操作_删除和遍历元素
+        删除元素
+            remove()
+                指定元素.remove();
+                删除元素及其对应的子元素，标签和内容一起删除
+            empty()
+                指定元素.empty();
+                清空元素内容，保留标签
+        遍历元素
+            each()
+                $(选择器).each(function(索引值,元素))
+                参数function为遍历时的回调函数，索引值从0开始，元素为dom类型
+-->
+<script src="js/jquery-3.5.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    //删除元素
+    $(".green").remove();
+
+    //清空元素
+    $(".blue").empty();
+
+    //获取指定元素并遍历
+    $(".purple").each(function (index,element) {
+        console.log(index);
+        console.log(element);
+        console.log(this);
+        //原本为dom对象，转成jQuery对象
+        console.log($(this));
+    })
+
+
+</script>
+</html>
+
+
