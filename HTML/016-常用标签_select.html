@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+</head>
+<!--
+    下拉框
+        select  下拉框标签
+            常用属性
+                multiple    设置下拉框可多选
+                size        设置下拉框可见选项数
+                disable     禁用元素
+        option  下拉框的选项标签
+            常用属性
+                selected    默认选中项
+                disabled    禁用某个选项
+                value       提交给服务器的某个选项值
+                    如果设置了value的属性值，则提交的是value的值
+                    如果未设置value的属性值，则提交option双标签中的文本值
+-->
+<body>
+    <select name="city" disabled="disabled">
+        <option>北京</option>
+        <option>上海</option>
+        <option>深圳</option>
+        <option>无锡</option>
+    </select>
+
+    <select name="city" multiple="multiple" size="2">
+        <option>北京</option>
+        <option>上海</option>
+        <option>深圳</option>
+        <option>无锡</option>
+    </select>
+
+    <select name="city">
+        <option>北京</option>
+        <option>上海</option>
+        <option>深圳</option>
+        <option value="无锡"></option>
+        <option selected="selected">--请选择城市--</option>
+    </select>
+</body>
+</html>

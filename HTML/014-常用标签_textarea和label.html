@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>textarea和label</title>
+</head>
+<!--
+    textarea
+        定义可输入多行文本的控件
+        常用属性
+            1.cols  文本的可见宽度
+            2.rows  文本的可见行数
+    label标签
+        for属性
+            当for属性与元素的id属性一致时，点击label标签会自动元素聚焦
+-->
+<body>
+    姓名：<input type="text" name="uname"/><br />
+    简介：<textarea cols="30" rows="10"></textarea>
+
+    <hr />
+
+    <label for="uname">姓名</label>:<input type="text" name="uname" id="uname"/><br />
+</body>
+</html>
