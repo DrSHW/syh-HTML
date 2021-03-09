@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用样式</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+
+<!--
+    常用样式
+        1. 标题
+            bootstrap对h1~h6的标题效果进行了覆盖
+            提供了对应的类名，为非标题元素设置样式  .h1~.h6
+            副标题 small标签 或 .small类名
+        2. 段落
+            通过.lead来突出强调内容(增大文本字号，加粗文本，而且对行高和margin也做相应的处理)
+            <small>:小号字
+            <b><strong>:加粗
+            <i><em>:斜体
+        3. 列表
+            无序列表    <ul><li>...</li></ul>
+            有序列表    <ol><li>...</li></ol>
+            定义列表    <dl><dt>...</dt><dd>...</dd></dl>
+                类名      list-unstyled   去点列表
+                          list-inline     内联列表
+                          dl-horizontal   自定义列表 内联列表    (测试标题长度不能超过160px,超过部分显示为...)
+        4. 代码
+            使用<code></code>来显示单行内联代码
+            使用<kbd></kbd>来显示用户输入代码,如快捷键
+            使用<pre></pre>来显示多行块代码
+                类名      pre-scrollable(height,max-height高度固定,为340px,超过存在滚动条)
+
+        5. 表格
+            table类名        table   基础表格
+                             table-bordered         带边框的表格
+                             table-striped          斑马线边框的表格
+                             table-hover            鼠标悬停高亮
+                             table-condensed        紧凑型表格
+            th,tr,td类名     active                 将鼠标悬停的格式运用到单元格上
+                             success                表示成功的操作
+                             info                   表示信息变化的操作
+                             warning                表示一个警告的操作
+                             danger                 表示一个危险分、的操作
+
+-->
+
+<!-- 标题 -->
+<h1>标题1<small>副标题1</small></h1>
+<h2>标题2<span class="small">副标题2</span></h2>
+<h3>标题3</h3>
+<div class="h1">你好</div>
+
+<hr/>
+
+<!-- 段落 -->
+<p>通过.lead来突出强调内容(增大文本字号，加粗文本，而且对行高和margin也做相应的处理)</p>
+<p class="lead">通过.lead来突出<small>强调</small><b>内容</b>(<strong>增大</strong>文本<i>字号</i>，
+    加粗文本，而且对<em>行高和margin</em>也做相应的处理)</p>
+
+<hr/>
+
+<!-- 列表 -->
+<!-- 无序列表 -->
+<ul>
+    <li>无序列表1</li>
+    <li>无序列表2</li>
+</ul>
+<!-- 有序列表 -->
+<ol>
+    <li>有序列表1</li>
+    <li>有序列表2</li>
+</ol>
+<!-- 定义列表 -->
+<dl>
+    <dt>HTML</dt>
+    <dd>超文本标记语言</dd>
+    <dt>CSS</dt>
+    <dd>层叠样式表</dd>
+</dl>
+<hr/>
+<!-- 去点列表 -->
+<ul class="list-unstyled">
+    <li>无序列表1</li>
+    <li>无序列表2</li>
+</ul>
+<!-- 内联列表 -->
+<ul class="list-inline">
+    <li>首页</li>
+    <li>Java</li>
+    <li>C++</li>
+</ul>
+<!-- 自定义列表 内联列表 -->
+<dl class="dl-horizontal">
+    <dt>HTML</dt>
+    <dd>超文本标记语言，是一种标识型语言</dd>
+    <dt>CSS</dt>
+    <dd>层叠样式表</dd>
+    <dt>测试标题长度不能超过160px</dt>
+</dl>
+
+<hr/>
+
+<!-- 代码 -->
+<!-- 使用<code></code>来显示单行内联代码 -->
+this is a simple code<br/>
+<code>this is a simple code</code><br/>
+<code>
+    this is a simple code<br/>
+    this is a simple code
+</code>
+<!-- 使用<kbd></kbd>来显示用户输入代码,如快捷键 -->
+<p>使用<kbd>Ctrl</kbd> + <kbd>S</kbd>保存内容</p>
+<!-- 使用<pre></pre>来显示多行块代码 -->
+<!-- 代码保留原本格式，包括空格和回车 -->
+<pre>
+    public class HelloWorld
+    {
+        public static void main(String args[])
+        {
+            System.out,println("Hello      World...");
+        }
+    }
+</pre>
+<!-- 显示HTML代码需要字符实体 -->
+<pre>
+    <h2>你好</h2>
+    &lt;h2&gt;你好&lt;/h2&gt;
+</pre>
+<!-- 长度超过指定值，可以添加滚动条 -->
+<pre class="pre-scrollable">
+    <ol>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+        <li>...................</li>
+    </ol>
+</pre>
+
+<hr/>
+
+<!-- 表格 -->
+<table class="table table-bordered table-striped table-hover table-condensed" >
+    <tr class="info">
+        <th>JavaSE</th>
+        <th>数据库</th>
+        <th>JavaScript</th>
+    </tr>
+    <tr class="success">
+        <td>面向对象</td>
+        <td>Oracle</td>
+        <td>JSON</td>
+    </tr>
+    <tr class="danger">
+        <td>数组</td>
+        <td>MySQL</td>
+        <td>ajax</td>
+    </tr>
+    <tr class="warning">
+        <th>JavaSE</th>
+        <th>数据库</th>
+        <th>JavaScript</th>
+    </tr>
+    <tr class="active">
+        <td>面向对象</td>
+        <td>Oracle</td>
+        <td>JSON</td>
+    </tr>
+    <tr>
+        <td>数组</td>
+        <td>MySQL</td>
+        <td>ajax</td>
+    </tr>
+</table>
+</body>
+</html>

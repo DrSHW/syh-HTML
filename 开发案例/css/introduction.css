@@ -1,0 +1,124 @@
+/*
+    通过id选择器设置样式
+*/
+#container{
+    background-color: #f0f0f0;/* 背景颜色 */
+    margin: 0 15%;/* 外边距 */
+    font-family: 等线;
+}
+
+/*
+    通过元素选择器设置样式
+*/
+h1{
+    height: 70px; /* 高度 */
+    color: white; /* 字体颜色 */
+    background-color: cornflowerblue; /* 背景颜色 */
+    line-height: 70px;/* 行间距 */
+    text-indent: 70px;/* 文本缩进 */
+}
+h2{
+    height: 50px; /* 高度 */
+    color: white; /* 字体颜色 */
+    background-color: sandybrown; /* 背景颜色 */
+    line-height: 50px;/* 行间距 */
+    text-indent: 70px;/* 文本缩进 */
+}
+/*
+    通过元素选择器设置样式
+*/
+#sp1{
+    font-size: x-large;
+    height: 50px; /* 高度 */
+    color: white; /* 字体颜色 */
+    background-color: cornflowerblue; /* 背景颜色 */
+    line-height: 50px;/* 行间距 */
+    text-indent: 70px;/* 文本缩进 */
+}
+#sp2{
+    font-size: x-large;
+    height: 50px; /* 高度 */
+    color: white; /* 字体颜色 */
+    background-color: cornflowerblue; /* 背景颜色 */
+    line-height: 50px;/* 行间距 */
+    text-indent: 70px;/* 文本缩进 */
+}
+#sp3{
+    font-size: x-large;
+    height: 50px; /* 高度 */
+    color: white; /* 字体颜色 */
+    background-color: lightgreen; /* 背景颜色 */
+    line-height: 50px;/* 行间距 */
+    text-indent: 70px;/* 文本缩进 */
+}
+
+/*
+    通过id选择器设置样式
+*/
+#nav1{
+   text-align: center;
+}
+#nav2{
+    text-align: center;
+}
+/* 通过后代选择器 nav导航li*/
+.nor{
+    display: inline-block; /* 设为行内 */
+    width: 120px;
+    height: 30px;
+    background-color: sandybrown;
+    line-height: 30px;
+    color: white;
+    font-style: oblique;
+    border: 1px solid sandybrown;
+    border-radius: 0 10px;
+}
+.spe{
+    display: inline-block; /* 设为行内 */
+    width: 120px;
+    height: 30px;
+    background-color: cornflowerblue;
+    line-height: 30px;
+    color: white;
+    font-style: oblique;
+    border: 1px solid cornflowerblue;
+    border-radius: 0 10px;
+}
+
+
+#nav1 li a{
+    text-decoration: none; /* 去下划线 */
+    color: white;
+}
+#nav1 li a:hover {
+    font-weight: bold;/* 悬停加粗 */
+}
+#nav2 li a{
+    text-decoration: none; /* 去下划线 */
+    color: white;
+}
+#nav2 li a:hover {
+    font-weight: bold;/* 悬停加粗 */
+}
+.center {
+    text-align: center;
+}
+.margin {
+    margin: 0px 30px;
+}
+.word{
+    text-indent: 30px;
+}
+textarea{
+    width: 90%;
+    height: 100px;
+}
+#copyright{
+    background-color: cornflowerblue;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    height: 70px;
+    line-height: 70px;
+}
+
