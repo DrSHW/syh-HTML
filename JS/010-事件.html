@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body onload="loadWindows()">
+    姓名：<input type="text" id="uname" />
+    <button type="button" onclick="clickBtn(0)"></button>
+    <hr/>
+    <select id = "city">
+        <option>请选择城市</option>
+        <option>北京</option>
+        <option>上海</option>
+    </select>
+    <hr/>
+    <div id = "div1">
+        这是一个div
+    </div>
+
+    <hr/>
+    <!-- HTML事件处理程序 -->
+    <button type="button" onclick="alert('Hello!')" onmouseout="leave()">html事件按钮</button>
+    <!-- DOM 0级事件处理程序 -->
+    <button type="button" id="btn">DOM 0级按钮</button>
+    <!-- DOM 2级事件处理程序 -->
+    <button type="button" id="btn2">DOM 2级按钮</button>
+</body>
+<!--
+    js事件
+        load加载事件
+            当页面加载完毕后执行的事件
+        常用事件
+            onload      当页面或图像加载完成后立即触发
+            onblur      元素失去焦点
+            onclick     鼠标点击某个对象
+            onchange    用户改变域的内容
+            onmouseover 鼠标移动到某个元素上
+            onmouseout  鼠标从某个元素上移开
+            onkeyup     某个键盘的键被松开
+            onkeydown   某个键盘的键被按下
+
+        事件流：(接收事件的顺序)
+            事件冒泡(从小到大)
+                事件开始时由最具体的元素接受，然后逐级向上传播到较为不具体的节点(文档)
+            事件捕获(从大到小)
+                事件开始时由document对象接受，然后逐级向下传播到具体的节点
+
+        事件处理程序
+            响应某个事件的函数就叫做事件处理程序(或事件监听器)。事件处理程序以on开头。
+            1.HTML事件处理程序
+            2.DOM 0级事件
+                将一个函数赋值给一个事件处理程序属性
+                只能为同一个元素的同一个事件设定一个事件程序(覆盖)
+            3.DOM 2级事件
+                addEventListener()
+                removeEventListener()
+                    都有三个参数：
+                        参数1：事件名
+                        参数2：处理事件的函数
+                        参数3：事件冒泡(false)或捕获(true)
+                    可以为同一个元素的同一个事件设定多个事件程序(添加)
+                    移除事件，该事件必须有事件名
+            document.getElementById("id属性值");   通过id属性值获取元素对象
+
+-->
+<script type="text/javascript">
+    /* 常用事件 */
+    //onload
+    window.onload = function (){
+        console.log("事件加载完毕...");
+    }
+
+    var uname = document.getElementById("uname");
+    //onblur
+    uname.onblur = function (){
+        console.log("文本框失去焦点");
+    };
+    //onfocus
+    uname.onfocus = function (){
+        console.log("文本框得到焦点");
+    };
+    //onclick
+    function clickBtn(){
+        console.log("您按了按钮")
+    }
+    //onchange
+    document.getElementById("city").onchange = function (){
+        console.log("下拉框值改变了")
+    }
+    //onmouseover
+    var div1 = document.getElementById("div1");
+    div1.onmouseover = function (){
+        console.log("鼠标悬停");
+    }
+    //onmouseout
+    div1.onmouseout = function (){
+        console.log("鼠标移开");
+    }
+    //onkeyup
+    uname.onkeyup= function (){
+        console.log("按键弹起");
+    }
+    //onkeydown
+    uname.onkeydown= function (){
+        console.log("按键按下");
+    }
+    console.log("=========================");
+    function leave(){
+        console.log("鼠标移开了")
+    }
+    function loadWindows(){
+        console.log("加载中...")
+    }
+    /*
+    * 加载事件
+    *   当页面上的标签和引入的资源加载完毕后，才会执行的方法
+    * */
+    window.onload = function () {
+        //通过id获得按钮对象
+        var btn = document.getElementById("btn");
+        console.log(btn);
+        //给元素绑定点击事件
+        btn.onclick = function () {
+            console.log("DOM 0级处理程序...");
+        }
+        //DOM 2级事件
+        var btn2 = document.getElementById("btn2");
+        //给按钮绑定事件监听
+        btn2.addEventListener('click', function () {
+            console.log("DOM 2级事件");
+        });
+        btn2.addEventListener('click', fn);
+
+        function fn() {
+            console.log("按钮被点击了...");
+        }
+
+        //移除事件
+        btn2.removeEventListener('click', fn);
+    }
+</script>
+</html>

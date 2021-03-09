@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本用法</title>
+</head>
+<!--
+    基本用法：
+        行内js
+            将js代码写在html标签上
+        内部js
+            写在html页面script标签中
+        外部js
+            创建js文件，通过script标签引入js文件
+
+        js放置的位置：
+            1.放在head标签中
+            2.放在body中
+            3.放在body标签后(推荐写法)
+
+        js代码从上往下依次执行，最好等到html元素执行完毕后再执行js代码
+
+        onclick 点击事件，当点击元素时触发
+        onclick="alert('内容')"
+        alert("内容") 弹出层
+        console.log
+-->
+<body>
+    <!-- 行内js -->
+<button type="button" onclick="alert('HELLO')">按钮</button>
+</body>
+<!-- 内部js -->
+<script type="text/javascript">
+    alert("你好")
+</script>
+<!-- 引入外部js文件 src 引入文件路径 charset 编码格式 -->
+<!-- 注：如果script标签设置了src属性，则在script标签写的js代码无效 -->
+<script src="JS/01-test.js" type="text/javascript" charset="utf-8"></script>
+</html>

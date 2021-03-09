@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bom对象</title>
+</head>
+<body>
+    <button type="button" onclick="testAlert()">消息框</button>
+    <button type="button" onclick="testPrompt()">输入框</button>
+    <button type="button" onclick="testConfirm()">确认框</button>
+    <hr/>
+    <button type="button" id="btn3">打开窗口</button>
+    <button type="button" onclick="test()">关闭窗口</button>
+    <hr/>
+    <button type="button" onclick="toBaidu()">10秒钟后跳转至百度</button>
+    <button type="button" onclick="init()">开始</button>
+    <button type="button" onclick="stop()">暂停</button>
+    <h2 id="time"></h2>
+    <hr/>
+    <button type="button" onclick="greet()">定时执行</button>
+</body>
+<!--
+    Bom对象
+        系统对话框
+        (1) 消息框:alert   *
+            alert() 方法用于显示带有一条指定消息和一个 OK 按钮的警告框
+        (2) 输入框:prompt  返回提示框中的值
+            prompt() 方法用于显示可提示用户进行输入的对话框
+            参数(optional)
+                第一个参数：要在对话框中显示的纯文本
+                第二个参数：默认的输入文本
+        (3) 确认框(confirm)
+            confirm() 方法用于显示一个带有指定消息和OK及取消按钮的对话框
+
+        打开窗口
+            window.open()方法既可以导航到一个特定的URL也可以用来打开一个新的窗口
+
+        关闭窗口
+            window.close()  关闭窗口
+
+        时间函数
+            setTimeout()
+                可以在指定毫秒数后调用函数或计算表达式，返回一个唯一的标识
+                也可以通过返回的标识clearTimeout(id)，来清除指定函数的执行
+                var id = setTimeout(function,times);
+                    参数1：执行的函数
+                    参数2：时间(单位毫秒)
+            setInterval()
+                可按照指定的周期(以毫秒计)来调用函数或计算表达式，也可根据返回的标识用来结束
+                该方法会不停地调用该函数，直到clearInterval()被调用或窗口关闭
+                var id = setInterval(function,times);
+                    参数1：执行的函数
+                    参数2：时间(单位毫秒)
+
+-->
+<script type="text/javascript">
+    /* 系统对话框 */
+    //1) 消息框:alert
+    function testAlert(){
+        alert("Hello");
+        console.log("你好...");
+    }
+    //2) 输入框:prompt  返回提示框中的值
+    function testPrompt(){
+        var uname1 = window.prompt("请输入用户名","");
+        console.log(uname1)
+    }
+    //3) 确认框(confirm)  返回true/false
+    function testConfirm() {
+        var flag = confirm("您确认要删除该记录吗？");
+        if (flag) {
+            alert("删除成功！");
+        } else {
+            alert("没事别瞎点！");
+        }
+    }
+
+        console.log("=========================");
+
+        document.getElementById("btn3").onclick = function () {
+            //打开空白窗口
+            //window.open();
+            //打开指定页面
+            //window.open("01-基本用法.html");
+            //打开网站
+            //window.open("https://www.baidu.com/");
+            //指定方式打开页面
+            window.open("http://www.baidu.com", "_self");
+        };
+
+        /* 关闭窗口 */
+        function test() {
+            window.close();
+        }
+
+        /* 时间函数 */
+        // setTimeout(function (){
+        //     console.log("三秒钟后执行程序...");
+        // },3000);
+
+        //10秒后跳转到百度
+        function toBaidu(){
+            setTimeout(test2,10000);
+        }
+        function test2(){
+            //打开百度
+            window.open("http://www.baidu.com");
+        }
+        console.log(new Date().toLocaleTimeString());
+
+        var id;
+        function init(){
+            var time = new Date().toLocaleTimeString();
+            //将时间赋值给h2标签
+            document.getElementById("time").innerHTML = time;
+            //每秒调用一下
+            id = setTimeout(init,1000);
+        }
+        //停止
+        function stop(){
+            clearTimeout(id);
+        }
+        //定时执行
+        function greet(){
+            setInterval(function (){
+                console.log("Hello~")
+            },1000);
+        };
+
+</script>
+</html>

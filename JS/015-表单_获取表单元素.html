@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取表单元素</title>
+</head>
+<body>
+    <form id="myform" method="get">
+        姓名:<input type="text" id="uname" name="uname" value="zs"/><br/>
+        密码:<input type="password" id="upwd" name="upwd" value="1234"/><br/>
+        <input type="hidden" id="uno" value="隐藏域"/>
+        个人说明:<textarea name="intro"></textarea>
+        <button type="button" onclick="getTxt()">获取元素内容</button>
+    </form>
+    <hr/>
+    <input type="radio" name="rad" value="1" />1
+    <input type="radio" name="rad" value="2" />2
+    <button type="button" onclick="getRadio()">获取</button>
+    <hr/>
+    <input type="checkbox" name="hobby" value="singing" /> 唱歌
+    <input type="checkbox" name="hobby" value="gaming" /> 打游戏
+    <input type="checkbox" name="hobby" value="learning" /> 学习
+    <button type="button" onclick="getCheckbox()">获取</button>
+    <hr/>
+    <select id="ufrom" name="ufrom">
+        <option value="-1">请选择</option>
+        <option value="Beijing" selected="selected">北京</option>
+        <option value="Shanghai">上海</option>
+        <option>深圳</option>
+    </select><br/>
+    <button type="button" id="sub" name="sub">获取</button>
+</body>
+<!--
+    获取表单元素
+        获取input元素
+           1.通过id获取                 document.getElementById(元素id);
+           2.通过form.名称形式获取       document.myform.元素名称;      name属性值
+           3.通过name获取               document.getElementByName(name属性值)[索引] //从0开始
+           4.通过tagName数组            document.getElementByTagName('input')[索引] //从0开始
+
+        获取单选按钮
+            1)获取单选按钮组
+                document.getElementByName("name属性值")
+            2)遍历每个单选按钮，并查看单选按钮元素的checked属性
+                for循环
+                    选中状态        checked = 'checked' or checked = true
+                    未选中状态      未设置checked属性 or checked = false
+
+        获取多选按钮
+             1)获取多选按钮组
+                document.getElementByName("name属性值")
+            2)遍历每个多选按钮，并查看多选按钮元素的checked属性
+                for循环
+                    选中状态        checked = 'checked' or checked = true
+                    未选中状态      未设置checked属性 or checked = false
+
+        获取下拉选项
+            1.获取下拉框(id属性值，name属性值，class属性值，元素)
+            2.获取下拉框的所有下拉选项
+                下拉框对象.options
+            3.获取下拉框被选中项的索引
+                下拉框对象.selectedIndex
+            4.获取被选中项的值
+                注意:当通过options获取选中项的value属性值时，
+                    若没有value属性，则取option标签的内容
+                    若存在value属性，则取value属性的值
+            5.获取被选中项的文本
+                选中状态设定：selected = "selected" or selected = true or selected
+                未选中状态设定：不设selected属性
+-->
+<script type="text/javascript">
+    //1.通过id获取                 document.getElementById(元素id);
+    var uname = document.getElementById("name");
+    console.log(uname);
+
+    //2.通过form.名称形式获取       document.myform.元素名称;      name属性值
+    var myform = document.getElementById("myform");
+    var upwd = myform.upwd.value;
+    console.log(upwd);
+
+    //3.通过name获取               document.getElementByName(name属性值)[索引] //从0开始
+    var uno = document.getElementsByName("uno")[0];
+    console.log(uno);
+
+    //4.通过tagName数组            document.getElementByTagName('input')[索引] //从0开始
+    var intro = document.getElementsByTagName("textarea")[0];
+    console.log(intro);
+
+    function getRadio(){
+        //1)获取单选按钮组
+        var radios = document.getElementsByName("rad");
+        //2)遍历每个单选按钮，并查看单选按钮元素的checked属性
+        for(let i = 0; i < radios.length; i++){
+            //console.log(radios[i].checked);
+            if(radios[i].checked){
+                //获取值
+                console.log(radios[i].value);
+            }
+        }
+    }
+
+    function getCheckbox(){
+        //1)获取单选按钮组
+        var checkboxes = document.getElementsByName("hobby");
+        var str = "";
+        //2)遍历每个单选按钮，并查看单选按钮元素的checked属性
+        for(let i = 0; i < checkboxes.length; i++){
+            if(checkboxes[i].checked){
+                //如果被选中，则获取对应的值
+                str += checkboxes[i].value + ",";
+            }
+        }
+        //截取去除多余逗号
+        str = str.substring(0,str.length-2);
+        console.log(str);
+    }
+
+    document.getElementById("sub").onclick = function (){
+        //1.获取下拉框(id属性值，name属性值，class属性值，元素)
+        var ufrom = document.getElementById("ufrom");
+        //2.获取下拉框的所有下拉选项
+        var selectOptions = ufrom.options;
+        console.log(selectOptions);
+        //3.获取下拉框被选中项的索引
+        var index = ufrom.selectedIndex;
+        console.log(index);
+        //4.获取被选中项的值
+        var val = selectOptions[index].value;
+        console.log(val);
+        //5.获取被选中项的文本
+        var txt = selectOptions[index].text;
+        console.log(txt);
+        //获取当前选中项的值
+        var selectValue = ufrom.value; //直接写也可
+        console.log(selectValue);
+        //设置下拉选项被选中
+        selectOptions[2].selected = true;
+    }
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型转换</title>
+</head>
+<body>
+
+</body>
+<!--
+    函数转换
+        parseInt()
+            在转换之前，首先会分析该字符串，判断位置为0的字符，判断它是否是个有效数字，如果不是，则直接返回NaN,
+            不再继续，如果是则继续，直到找到非字符
+        parseFloat()
+            同上，但可以识别一个小数点
+    显式转换
+        toString()
+            将数字转换成字符串
+        toFixed()
+            根据小数点后指定位数将数字转换为字符串，四舍五入
+
+    构造方法
+        JS为Number、Boolean、String对象听了构造方法，用于强制转换其他类型的数据。
+        此时操作的不是整个数据，而不是一部分。
+        String()
+            把任何值转成字符串(null也可)
+
+    最简单的转字符串方式：往任意数据后面加空字符串(+"")
+-->
+<script type="text/javascript">
+    //函数转换
+    /* parseInt() */
+    console.log(parseInt("123abc")); // 123
+    console.log(parseInt("123.45")); // 123
+    console.log(parseInt("abc123")); // NaN
+
+    /* parseFloat() */
+    console.log(parseFloat("123abc")); // 123
+    console.log(parseFloat("123.45")); // 123.45
+    console.log(parseFloat("abc123")); // NaN
+    console.log(parseFloat("12.34.56")); // 12.34
+
+    console.log("========================");
+
+    //显式转换
+    /* toString() */
+    var data = 10;
+    console.log(data);
+    console.log(data.toString());
+    var data1 = null;
+    //console.log(data1.toString()); //Cannot read property 'toString' of null
+
+    /* toFixed() */
+    var data2 = 1.4;
+    console.log(data2.toFixed(0));
+    var data3 = 1.46;
+    console.log(data3.toFixed(1));
+
+    console.log("=======================");
+
+    /* 构造方法 */
+    //Number()
+    console.log(Number("5.5 ")); // 5.5
+    console.log(Number("56 ")); // 56
+    console.log(Number("5.6.7")); // NaN
+
+    //Boolean()
+    console.log(Boolean(""));
+    console.log(Boolean("on"));
+    console.log(Boolean("100"));
+    console.log(Boolean("0"));
+
+    //String()
+    var str = null;
+    console.log(String(str));
+
+    //+""
+    var flag = true;
+    console.log(flag+"");
+</script>
+</html>

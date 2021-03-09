@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM对象</title>
+</head>
+<body>
+    <div id="div1">
+        <a href="01-基本用法.html">index</a>
+        <hr/>
+        <p id="p1" class="para">这是一个段落<span>文本</span></p>
+        <p id="p1" class="para">这有是一个段落</p>
+        <input type="text" name="txt" />
+        <input type="checkbox" name="hobby" value="游泳" />游泳
+        <input type="checkbox" name="hobby" value="篮球" />篮球
+        <input type="checkbox" name="hobby" value="足球" />足球
+        <hr/>
+        <a href="javascript:void(0)" onclick="testById()">按照id获取</a>
+        <a href="javascript:void(0)" onclick="testByName()">按照name获取</a>
+        <a href="javascript:void(0)" onclick="testByTagName()">按照标签名获取</a>
+        <a href="javascript:void(0)" onclick="testByClass()">按照class获取</a>
+    </div>
+        <hr/>添加节点<br/>
+        <button onclick="addPara()";>添加段落</button>
+    <button onclick="addImg()";>添加图片</button>
+    <button onclick="addTxt()";>添加文本框</button>
+    <button onclick="addOptions()";>添加选项</button>
+    <select name = "music">
+        <option value="-1">给我一首歌的时间</option>
+        <option value="-1">东风破</option>
+        <option value="-1">发如雪</option>
+    </select>
+    <hr/>
+    <div id = "container">
+    </div>
+<hr/>
+<ul>
+    <li id="red">红色</li>
+    <li>绿色</li>
+</ul>
+<hr/>
+    <span id = "programmer">程序猿</span>
+    <a href="javascript:void(0)" onclick="delNode()";>删除</a>
+</body>
+<!--
+    DOM对象
+        文档节点    文档本身整个文档    document元素的节点所有的HTML文档<a>,<div>,<p>
+        属性节点    HTML元素内的属性   id、href、name、class
+        文本节点    元素内的文本       （普通文本）
+        注释节点    HTML中的注释       <! -- -- >
+
+        获取节点
+            注意：操作dom必须等节点初始化完毕后，才能执行
+                处理方式
+                    1.把script调用标签移到html末尾即可
+                    2.使用onload事件来处理js，等待html加载完毕再加载onload事件里的js
+
+                方法
+                getElementById()            根据id获取dom对象，如果id重复，那么以第一个为准
+                getElementByTagName()       根据标签获取dom对象数组
+                getElementByClassName()     根据样式名获取dom对象数组，常用于多选获取值
+
+        创建节点
+            方法
+                createElement()             创建一个新的节点，需要传入节点的标签名称，返回创建的元素对象
+                createTextNode()            创建一个文本节点，可以传入文本内容
+                insertBefore()              创建节点，且能添加到指定位置
+
+        插入节点
+            方法
+            write()                         将任意的字符串插入到文档中
+            appendChild()                   向元素中添加新的子节点，作为最后一个子节点
+            insertBefore()                  向指定的已有节点之前插入新的节点
+                                                newItem：要插入的节点
+                                                existingItem：参考节点   需要参考父节点
+
+        间接查找节点
+            方法
+            childNodes                 返回元素的一个子节点的数组
+            children                   返回所有的子元素
+            firstChild                 返回元素的第一个子节点
+            lastChild                  返回元素的最后一个子节点
+            firstElementChild          返回元素的第一个子元素
+            lastElementChild           返回元素的最后一个子元素
+            nextSibling                返回元素的下一个兄弟节点
+            parentNode                 返回元素的父节点
+            previousSibling            返回元素的上一个兄弟节点
+            nextElementSibling         返回元素的下一个兄弟元素
+            previousElementSibling     返回元素的上一个兄弟元素
+            parentElement              返回元素的父元素
+
+       删除节点
+            removeChild             从元素中删除子节点
+-->
+
+<script type="text/javascript">
+    //按照id获取,如果id重复,那么以第一个为准
+    function testById(){
+        var p = document.getElementById("p1");
+        console.log(p);
+    }
+
+    //按照name获取
+    function testByName(){
+        var hobbys = document.getElementsByName("hobby");
+        console.log(hobbys[1]);
+    }
+
+    //按照标签名获取
+    function testByTagName(){
+        var inputs = document.getElementsByTagName("input");
+        console.log(inputs);
+        //获取元素类型
+        for (let i = 0; i < inputs.length; i++)
+        {
+            console.log(inputs[i].type);    //input的类型
+            console.log(inputs[i].value);   //input的值
+            if(inputs[i].type == "checkbox"){
+                console.log(inputs[i].checked); //单选框和复选框是否选中
+            }
+        }
+    }
+
+    //通过class获取
+    function testByClass() {
+        let cla = document.getElementsByClassName("para");
+        console.log(cla.length);
+    }
+
+    /* 添加段落 */
+    function addPara(){
+        //获取容器div
+        var div = document.getElementById("container");
+
+        /* 方式1 */
+        // //创建p元素
+        // var p = document.createElement("p");
+        // console.log(p);
+        // //创建文本节点
+        // var txt = document.createTextNode("这是一段文本");
+        // console.log(txt);
+        // //将文本节点追加到元素节点之中
+        // p.appendChild(txt);
+        // console.log(p);
+        // //将p标签设置到div中
+        // div.appendChild(p);
+
+        /* 方式2 */
+        // //创建p元素
+        // var p = document.createElement("p");
+        // //给p元素赋值
+        // p.innerHTML = "这是一段文本";
+        // console.log(p);
+
+        /* 方式3 */
+        var p = "<p>这是一段文本</p>";
+        div.innerHTML += p;
+    }
+
+    //添加图片
+    function addImg(){
+        //获取容器div
+        var div = document.getElementById("container");
+
+        /* 方式1 */
+        // //创建img元素
+        // var img = document.createElement("img");
+        // //console.log(img);
+        // //设置属性
+        // img.src = "imgs/cy.jpg";
+        // console.log(img);
+        // //设置宽高属性
+        // img.width = 100;
+        // //将图片设置到div容器中
+        // div.appendChild(img);
+
+        /* 方式2 */
+        // //创建img元素
+        // var img = document.createElement("img");
+        // img.setAttribute("src","imgs/cy.jpg");
+        // //将图片设置到div容器中
+        // div.appendChild(img);
+
+        /* 方式3 */
+        var img = "<img src='imgs/cy.jpg' />";
+        div.innerHTML += img;
+
+    }
+
+    /* 添加文本框 */
+    function addTxt(){
+        //得到容器元素
+        var div = document.getElementById("container");
+
+        /* 方式1 */
+        // //创建input元素
+        // var inp = document.createElement("input");
+        // //指定input元素的类型
+        // inp.type = "text";  //文本框类型
+        // inp.value = "今天天气不错";   //文本框的值
+        // //将input元素设置到容器中
+        // div.appendChild(inp);
+
+        /* 方式2 */
+        //创建input元素
+        var inp = document.createElement("input");
+        //设置属性
+        inp.setAttribute("type","text");
+        inp.setAttribute("value","你好");
+        //将input元素设置到容器中
+        div.appendChild(inp);
+
+        /* 方式3 */
+        var inp = "<input type='text' value='hello' />";
+        div.appendChild(inp);
+    }
+
+    //添加下拉框
+    function addOptions() {
+        /* 方式1 */
+        // //通过name属性值获取下拉框对象
+        // var music = document.getElementsByName("music")[0];
+        // //创建下拉选项
+        // var opt = document.createElement("option");
+        // //设置文本和值
+        // opt.value = "2";
+        // opt.text = "晴天";
+        // //给下拉框添加下拉选项
+        // music.appendChild(opt);
+
+        /* 方式2 */
+        // //创建下拉选项
+        // var opt = document.createElement("option");
+        // //设置文本和值
+        // opt.value = "2";
+        // opt.text = "晴天";
+        // //将option添加到下拉列表中
+        // console.log(music.options);
+        // music.options.add(music.options);
+
+        /* 方式3 */
+        var opt = "<option value='2'>千里之外</option>"
+        music.innerHTML += opt;
+        //write()                         将任意的字符串插入到文档中
+
+        //newItem：要插入的节点
+        //existingItem：参考节点   需要参考父节点
+        document.write("<h2>你好</h2>");
+        document.write("<h2>hello</h2>");
+        //insertBefore()                  向指定的已有节点之前插入新的节点
+        var li = document.createElement("li");
+        var txt = document.createTextNode("粉色");
+        li.appendChild(txt);
+        document.getElementById("red").parentElement.insertBefore(li, document.getElementById("red"));
+    }
+        /* 间接查找节点 */
+        //得到ul
+        var ul = document.getElementsByTagName("ul")[0];
+        //childNodes          返回元素的一个子节点的数组
+        console.log(ul.childNodes);
+        //children            返回所有的子元素
+        console.log(ul.children);
+        //firstChild          返回元素的第一个子节点
+        console.log(ul.firstChild);
+        //firstElementChild          返回元素的第一个子元素
+        console.log(ul.firstElementChild);
+        //lastChild           返回元素的最后一个子节点
+        console.log(ul.lastChild);
+        //lastElementChild          返回元素的最后一个子元素
+        console.log(ul.lastElementChild);
+        //nextSibling         返回元素的下一个兄弟节点
+        console.log(document.getElementById("red").nextSibling);
+        //nextElementSibling         返回元素的下一个兄弟元素
+        console.log(document.getElementById("red").nextElementSibling);
+        //previousSibling     返回元素的上一个兄弟节点
+        console.log(document.getElementById("red").previousSibling);
+        //previousElementSibling     返回元素的上一个兄弟元素
+        console.log(document.getElementById("red").previousElementSibling);
+        //parentNode          返回元素的父节点
+        console.log(ul.parentNode);
+        //parentElement          返回元素的父元素
+        console.log(ul.parentElement);
+
+        function delNode(){
+            //得到被删除的对象
+            var span = document.getElementById("programmer");
+            //得到被删除对象的父元素
+            var parent = span.parentElement;
+            //删除元素
+            parent.removeChild(span);
+        }
+</script>
+</html>

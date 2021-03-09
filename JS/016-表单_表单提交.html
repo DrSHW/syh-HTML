@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单提交</title>
+</head>
+<body>
+    <form id="myform1" name="myform" action="http://www.baidu.com" method="get" />
+        <input name="text" id="uname" />
+        <input type="button" value="提交表单" onclick="submitForm()"/>
+    </form>
+<hr/>
+    <form id="myform2" name="myform" action="http://www.baidu.com" method="get" />
+    <input name="text" id="uname2" />
+    <input type="submit" value="提交表单" onclick="return submitForm2()"/>
+    </form>
+<hr/>
+    <form id="myform3" name="myform" action="http://www.baidu.com" method="get" onsubmit="return submitForm3()"/>
+    <input name="text" id="uname3" />
+    <input type="submit" value="提交表单"/>
+    </form>
+</body>
+<!--
+    提交表单
+        1.使用普通button按钮+onclick事件+事件中编写代码：
+            获取表单.submit()
+        2.使用submit按钮+onclick="return 函数()"+函数编写代码：
+            最后必须返回  return true|false
+        3.使用submit按钮/图片提交按钮+表单onsubmit="return 函数()"+函数编写代码：
+            最后必须返回  return true|false
+-->
+<script type="text/javascript">
+    //1.使用普通button按钮+onclick事件+事件中编写代码：
+    function submitForm(){
+        //获取姓名文本框的值
+        var uname = document.getElementById("uname").value;
+        /* trim()去除字符串前后的空格 */
+        if (uname != null || uname.trim() == ""){
+            //结束
+            return;
+        }
+        //提交表单
+        document.getElementById("myform1").submit();
+    }
+
+    //2.使用submit按钮+onclick="return 函数()"+函数编写代码：
+    function submitForm2() {
+        //获取姓名文本框的值
+        var uname = document.getElementById("uname2").value;
+        /* trim()去除字符串前后的空格 */
+        if (uname != null || uname.trim() == ""){
+            //结束
+            return false;
+        }
+        //提交
+        return true;
+    }
+
+    //3.使用submit按钮/图片提交按钮+表单onsubmit="return 函数()"+函数编写代码：
+    function submitForm3() {
+        //获取姓名文本框的值
+        var uname = document.getElementById("uname3").value;
+        /* trim()去除字符串前后的空格 */
+        if (uname != null || uname.trim() == ""){
+            //结束
+            return false;
+        }
+        //提交
+        return true;
+    }
+</script>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+
+</body>
+<!--
+    数组
+        数组的定义
+            var arr = [value1,value2,value3]; //隐式定义
+            var arr = new Array(value1,value2,value3); //直接实例化
+            var arr = new Array(size); //创建数组并指定长度
+
+        数组的特点
+            1.长度可变
+            2.数组中数据类型任意
+            3.索引从0开始
+            4.可以使用任意字符做下标的索引，如果索引值是非正整数，我们称之为数组的属性，属性不影响数组的长度
+
+
+        基本操作
+            1.数组的长度可以通过length来获取，长度可以任意修改
+                获取长度：数组.length()
+                设置长度：数组.length() = 新长度
+            2.获取数组中元素通过索引获取，索引可以越界
+                获取元素：数组[下标]
+                设置元素：数组[下标] = 新值
+
+
+        * var 和 let , 都可以用来声明变量*
+        * 区别：var是无约束的定义，let只在let命令所在的代码块内有效，而且有暂时性死区的约束。 *
+        * let非常适合用于 for循环内部的块级作用域。JS中的for循环体比较特殊，每次执行都是一个全新的独立的块作用域，
+        用let声明的变量传入到 for循环体的作用域后，不会发生改变，不受外界的影响。*
+
+        数组的遍历
+             1.普通的for循环遍历(不遍历属性)
+               for(let i = 0; i < arr.length; i++) {
+                   console.log(arr[i]);
+               }
+             2.for...in...循环(不遍历索引中的undefined)
+               for(let idx in arr){
+                   console.log(arr[idx]);
+               }
+             3.forEach(不遍历属性和索引中的undefined)
+               arr.forEach(function(elem,idx){
+                  console.log(idx + '- ->' + elem);
+               })
+
+       数组的基本方法
+        push        添加元素到最后
+        unshift     添加元素到最前
+        pop         删除最后一项
+        shift       删除第一项
+        reverse     数组翻转
+        join        数组转成字符串
+        indexOf     数组元素索引
+        slice       截取(切片)数组，原数组不发生变化
+        splice      剪接数组，原数组变化，可以实现前后删除效果
+        concat      数组合并
+-->
+<script type="text/javascript">
+
+    /* 数组的定义 */
+    // 隐式定义
+    var arr1 = [];
+    console.log(arr1);
+    var arr2 = [1,'a',true];
+    console.log(arr2);
+
+    // 直接实例化
+    var arr3 = new Array(1,2,3);
+    console.log(arr3);
+
+    // 创建数组并指定长度
+    var arr4 = new Array(5);
+    console.log(arr4);
+
+    /* 基本操作 */
+
+    // 获取数组长度
+    console.log(arr2.length);
+
+    // 设置数组的长度
+    arr2.length = 5;
+    console.log(arr2);
+
+    //获取数组的元素
+    console.log(arr2[1]);
+    console.log(arr2[10]);
+
+    //设置数组的元素
+    //设置元素
+    arr2[4] = "张三";
+    console.log(arr2);
+    //设置属性
+    arr2['uname'] = "admin";
+
+    console.log("===================");
+
+    /* 数组的遍历 */
+    //1.普通的for循环遍历(不遍历属性)
+    for (let i = 0; i < arr2.length; i++) {
+        console.log(arr2[i]);
+    }
+
+    console.log("====================");
+
+    //2.for...in...(不遍历索引中的undefined)
+    for (let idx in arr2){
+        console.log(arr2[idx]);
+    }
+
+    console.log("====================");
+
+    //3.forEach(不遍历属性和索引中的undefined)
+    arr2.forEach(function(elem,idx){
+        console.log(idx + '-->' + elem);
+    })
+
+    console.log("====================");
+
+    /* 数组方法 */
+    var arr = [1,2,'a',3,'b'];
+    //push        添加元素到最后
+    arr.push("c");
+    //unshift     添加元素到最前
+    arr.unshift(0);
+    console.log(arr);
+    //pop         删除最后一项
+    arr.pop();
+    //shift       删除第一项
+    arr.shift();
+    console.log(arr);
+    //reverse     数组翻转
+    var arr3 = arr.reverse();
+    console.log(arr3);
+    //join        数组转成字符串
+    var str = arr.join("-");
+    console.log(str);
+    //indexOf     数组元素索引
+    var index = arr.indexOf('a');
+    console.log(index);
+    //slice       截取(切片)数组，原数组不发生变化
+    var arr4 = arr.slice(2,3);
+    console.log(arr4);
+    //splice      剪接数组，原数组变化，可以实现前后删除效果
+    var arr5 = arr.splice(1,2,'aa',"bb");
+    console.log(arr5);
+    console.log("=====================");
+    console.log(arr);
+    //concat      数组合并
+    var arr6 = [100,200];
+    var arr7 = arr.concat(arr6);
+    console.log(arr7);
+
+</script>
+</script>
+</html>

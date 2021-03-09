@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+</head>
+<body>
+    <button type="button" onclick="test()">跳转</button>
+    <button type="button" onclick="test1()">replace</button>
+    <button type="button" onclick="test2()">reload</button>
+</body>
+<!--
+    location对象
+        属性
+            href    设置或返回完整的URL
+        方法
+            reload()  重新加载当前文档
+            replace()   用新的文档覆盖当前文档(不能后退)
+
+-->
+<script type="text/javascript">
+    //获取当前访问的url
+    var url = window.location.href;
+    console.log(url);
+
+    // href    设置或返回完整的URL
+    function test(){
+        //设置url 页面跳转
+        window.location.href = "012-页面二.html";
+    }
+
+    //replace()   用新的文档覆盖当前文档(不能后退)
+    function test1() {
+        window.location.replace("012-页面三.html");
+    }
+
+    //reload()  重新加载当前文档
+    function test2(){
+        window.location.reload();
+    }
+</script>
+</html>
