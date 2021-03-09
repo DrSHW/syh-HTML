@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <!--
+        边框border
+            1.设置元素边框的宽度、颜色、类型
+            2.单独设置边框的颜色、宽度、类型
+                border-color
+                border-width
+                border-style
+            3.设置属性值的顺序： 上 右 下 左
+              设置一个属性，表示边框四边效果一致
+              设置两个属性，表示上下一致，左右一致
+              设置三个属性，表示上右下不一致，左右一致
+            4.border-collapse
+                设置是否将表格边框折叠为单一边框
+                属性值：separate(默认，单元格边框独立)、collapse(单元格边框合并)
+    -->
+    <style type="text/css">
+        #div1 {
+            border: 1px olivedrab dotted;
+        }
+        #div2 {
+            border-style: solid;
+            border-color: greenyellow;
+            border-width: 2px;
+        }
+        #div3 {
+            border-style: solid dashed double none;
+            border-color: red;
+            border-width: 3px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    1这是一段文本
+</div>
+<hr/>
+<div id="div2">
+    2这是一段文本
+</div>
+<hr/>
+<div id="div3">
+    3这是一段文本
+</div>
+<hr/>
+<table border="1" cellspacing="" cellpadding="">
+    <tr><th>Header</th></tr><tr><th>Body</th></tr>
+    <tr><td>Data1</td></tr><tr><td>Data2</td></tr>
+</table>
+</body>
+</html>

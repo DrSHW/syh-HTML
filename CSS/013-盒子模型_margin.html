@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>margin</title>
+    <!--
+        margin外边距
+            设置外边距
+                设置一个值，表示四个方式相同
+                设置两个值，表示上下一致，左右一致
+                设置三个值，表示上、右、下不一致，左右一致
+                设置四个值，表示上、右、下、左不一致
+
+                单独设置各边的外边距：margin-top、margin-left、margin-bottom、margin-right
+    -->
+    <style type="text/css">
+        p {
+            background-color: bisque;
+        }
+        #p1 {
+            /* 设置一个值，表示四个方式相同 */
+            /*    margin: 100px;*/
+            /* 设置两个值，表示上下一致，左右一致 */
+            /*    margin: 100px 150px;*/
+            /* 设置三个值，表示上、右、下不一致，左右一致 */
+            /*    margin: 100px 150px 2000px;*/
+            /* 设置四个值，表示上、右、下、左不一致 */
+            /*    margin: 100px 150px 200px 250px;*/
+            /* 设置上边距 */
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>这是文本</p>
+    <p id="p1">这是文本</p>
+</body>
+</html>

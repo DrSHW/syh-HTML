@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display</title>
+    <!--
+        display属性
+            规定元素生成框的类型
+            block   元素会被显示且元素会变成块级元素 (可设置元素的宽度和边距，元素前后会有换行符)
+            none    元素会被隐藏
+            inline  元素会显示为行内元素 (不可以设置元素的宽度和边距，元素前后没有换行符)
+            inline-block    元素会被显示为行内块级元素(可以设置元素的宽度和边距，元素前后没有换行符)
+    -->
+    <style>
+
+        #sp2 {
+            /* 隐藏元素 */
+            display: none;
+        }
+
+        #sp2 {
+            /* 设置元素会显示，且元素会变成块级元素，元素前后会有换行符 */
+            display: block;
+            width: 200px;
+            height: 100px;
+            background-color: gray;
+        }
+
+        #sp1 {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+      /* 设置元素为行内元素 */
+        #div1 {
+            background-color: royalblue;
+        }
+
+        #div2 {
+            background-color: thistle;
+        }
+
+        #div3 {
+            background-color: paleturquoise;
+        }
+        /* 行内元素 */
+        div {
+            display: inline;
+            width: 100px;
+        }
+
+        /* inline-block     行内块级元素*/
+        p {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<span id="sp1">
+    这是span1
+</span>
+<span id="sp2">
+    这是span2
+</span>
+<span id="sp3">
+    这是span3
+</span>
+
+<hr/>
+
+<div id="div1">这是div1</div>
+<div id="div2">这是div2</div>
+<div id="div3">这是div3</div>
+
+<hr/>
+<p>这是p标签</p>
+</body>
+</html>
